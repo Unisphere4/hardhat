@@ -193,8 +193,7 @@ describe("Token contract", function () {
 
       // Try to send 1 token from addr1 (0 tokens) to owner (1000 tokens).
       // `require` will evaluate false and revert the transaction.
-      await expect(
-        hardhatToken.connect(addr1).transfer(owner.address, 1)
+      expect(await hardhatToken.connect(addr1).transfer(owner.address, 1)
       ).to.be.revertedWith("Not enough tokens");
 
       // Owner balance shouldn't have changed.
@@ -235,7 +234,7 @@ $ npx hardhat test
       ✓ Should assign the total supply of tokens to the owner
     Transactions
       ✓ Should transfer tokens between accounts (199ms)
-      ✓ Should fail if sender doesn’t have enough tokens
+      1) Should fail if sender doesn’t have enough tokens
       ✓ Should update balances after transfers (111ms)
 
 
